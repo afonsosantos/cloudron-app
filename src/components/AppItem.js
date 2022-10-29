@@ -6,8 +6,8 @@ import {
   Linking,
   StyleSheet,
 } from "react-native";
-import { ACCESS_TOKEN } from "../config";
 import moment from "moment";
+import { ACCESS_TOKEN } from "../config";
 
 export default function AppItem({
   appId,
@@ -20,7 +20,7 @@ export default function AppItem({
   const openInBrowser = (url) => {
     Linking.canOpenURL(url).then((supported) => {
       if (supported) {
-        Linking.openURL(url);
+        Linking.openURL(`https://${url}`);
       } else {
         console.log("Don't know how to open URI: " + url);
       }
@@ -29,7 +29,7 @@ export default function AppItem({
 
   return (
     <TouchableOpacity
-      onPress={() => openInBrowser("https://" + appUrl)}
+      onPress={() => openInBrowser(appUrl)}
       style={styles.itemContainer}
     >
       <View style={styles.container}>
